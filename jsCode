@@ -31,11 +31,11 @@ function domLoaded() {
                img.src = "images/cold.png"
                img.alt = "Cold"
             }
-            if (fArea > 50) {
+            else if (fArea > 50) {
                img.src = "images/warm.png"
                img.alt = "Warm"
             }
-            if ((fArea >= 32 && fArea <= 50)) {
+            else if ((fArea >= 32 && fArea <= 50)) {
                img.src = "images/cool.png"
                img.alt = "Cool"
             }
@@ -57,11 +57,11 @@ function domLoaded() {
                img.src = "images/cold.png"
                img.alt = "Cold"
             }
-            if (cArea > 10) {
+            else if (cArea > 10) {
                img.src = "images/warm.png"
                img.alt = "Warm"
             }
-            if ((cArea >= 0 && cArea <= 10)) {
+            else if ((cArea >= 0 && cArea <= 10)) {
                img.src = "images/cool.png"
                img.alt = "Cool"
             }

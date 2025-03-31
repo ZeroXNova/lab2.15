@@ -61,7 +61,7 @@ function domLoaded() {
                img.src = "images/warm.png"
                img.alt = "Warm"
             }
-            else if ((cArea >= 0 && cArea <= 10)) {
+            else if ((cArea => 0 && cArea <= 10)) {
                img.src = "images/cool.png"
                img.alt = "Cool"
             }

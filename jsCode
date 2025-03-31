@@ -4,51 +4,82 @@ function domLoaded() {
    
    let convert = document.getElementById("convertButton");
    let img = document.getElementById("weatherImage");
-
-   document.getElementById("cInput").addEventListener("keyup", function() {
-      document.getElementById("fInput").value = ""
+   let cIn = document.getElementById("cInput");
+   let fIn = document.getElementById("fInput");
+   cIn.addEventListener("keydown", function () {
+      document.getElementById("fInput").value = "";
+      fIn = "";
    });
-   document.getElementById("fInput").addEventListener("keyup", function () {
-      document.getElementById("cInput").value = ""
+   fIn.addEventListener("keydown", function () {
+      document.getElementById("cInput").value = "";
+      cIn = "";
    });
-  
-
-   
-   convert.addEventListener("click",function() {
+   convert.addEventListener("click", function () {
       let cArea = document.getElementById("cInput").value;
       let fArea = document.getElementById("fInput").value;
- 
-  
 
       if (fArea !== "") {
          fArea = parseFloat(fArea);
-         let result = convertFtoC(fArea);
-         cArea = result;
-         document.getElementById("cInput").value = cArea;} 
+         let error = document.getElementById("errorMessage");
+         if (isNaN(fArea)) {
+            fArea = document.getElementById("fInput").value;
+            error.textContent = (fArea + " is not a number");
+         }
+         else {
+            error.textContent = "";
+            if (fArea < 32) {
+               img.src = "images/cold.png"
+               img.alt = "Cold"
+            }
+            if (fArea > 50) {
+               img.src = "images/warm.png"
+               img.alt = "Warm"
+            }
+            if ((fArea >= 32 && fArea <= 50)) {
+               img.src = "images/cool.png"
+               img.alt = "Cool"
+            }
+            let result = convertFtoC(fArea);
+            cArea = result;
+            document.getElementById("cInput").value = cArea;
+            
+            }} 
       if (cArea !== "") {
          cArea = parseFloat(cArea);
-         let result = convertCtoF(cArea);
-         fArea = result;
-         document.getElementById("fInput").value = fArea;}
-
-      if (fArea < 32) {
-         img.src = "/images/cold.png"
-         img.alt = "Cold"
+         let error = document.getElementById("errorMessage");
+         if (isNaN(cArea)) {
+            cArea = document.getElementById("cInput").value;
+            error.textContent = (cArea + " is not a number");
+         }
+         else {
+            error.textContent = "";
+            if (cArea < 0) {
+               img.src = "images/cold.png"
+               img.alt = "Cold"
+            }
+            if (cArea > 10) {
+               img.src = "images/warm.png"
+               img.alt = "Warm"
+            }
+            if ((cArea >= 0 && cArea <= 10)) {
+               img.src = "images/cool.png"
+               img.alt = "Cool"
+            }
+            let result = convertCtoF(cArea);
+            cArea = result;
+            document.getElementById("fInput").value = cArea;
+            
+         }
       }
-      if (fArea >= 32 && fArea <= 50) {
-         img.src = "/images/cool.png"
-         img.alt = "Cool"
-      }
-      if (fArea > 50) {
-         img.src = "/images/warm.png"
-         img.alt = "Warm"
-      }
+ 
+      
    }
 )}
 
 function convertCtoF(degreesCelsius) {
    let result = (degreesCelsius * 1.8) + 32;
    return result;
+   
 }
 
 function convertFtoC(degreesFahrenheit) {

@@ -18,7 +18,7 @@ function domLoaded() {
       let cArea = document.getElementById("cInput").value;
       let fArea = document.getElementById("fInput").value;
 
-      if (fArea !== "") {
+      if (fArea != "") {
          fArea = parseFloat(fArea);
          let error = document.getElementById("errorMessage");
          if (isNaN(fArea)) {
@@ -44,7 +44,7 @@ function domLoaded() {
             document.getElementById("cInput").value = cArea;
             
             }} 
-      if (cArea !== "") {
+      if (cArea != "") {
          cArea = parseFloat(cArea);
          let error = document.getElementById("errorMessage");
          if (isNaN(cArea)) {
